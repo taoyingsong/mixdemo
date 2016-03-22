@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Animate.css!</title>
+	<link rel="stylesheet" type="text/css" href="animate.min.css">
+</head>
+<body>
+	<!-- 原始状态 -->
+	<a href="#" class="button">Holla!</a>	
+
+	<!-- demo1 begin 添加 "animated shake" 这2个class产生动画-->
+	<!-- <a href="#" class="button animated shake">Holla!</a> -->
+	<!-- demo1 end -->
+
+	<!-- demo2 begin 添加 "animated infinite shake" 这3个class产生动画-->
+	<!-- <a href="#" class="button animated infinite shake">Holla!</a> -->
+	<!-- demo2 end -->
+
+	<input type="text" name="firstName">
+
+	<style type="text/css">
+		body {
+			margin: 50px;
+			background: #2980b9;
+			font-family: sans-serif;
+			text-align: center;
+		}
+
+		a.button {
+			background: #e74c3c;
+			color: white;
+			padding: 20px;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 50px;
+			border-radius: 10px;	
+			
+			/*demo3 begin 和 demo2结合使用*/
+			-webkit-animation-duration: .5s;
+			/*-webkit-animation-delay: 4s;*/
+			/*-webkit-animation-iteration-count: infinite;*/
+			/*demo3 end*/
+		}
+	</style>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+
+	<!-- demo4 begin 用js控制动画 -->
+	<script type="text/javascript">
+	$(function () {
+		var animationName = 'animated shake';
+		var animationend = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+		$('a.button').on('click', function () {
+			$('input[name=firstName]').addClass(animationName).one(animationend, function () {
+				$(this).removeClass(animationName);
+			});
+		});
+	});
+	</script>
+	<!-- demo4 end 用js控制动画 -->
+</body>
+</html>

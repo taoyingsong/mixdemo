@@ -1,0 +1,36 @@
+/*
+Error: Invalid US-ASCII character "\xE9"
+        on line 2 of /Users/lagou/Desktop/test/toolbar/toolbar/css/mixin.scss
+
+1: 
+2: // 透明度的简化整合 
+3: @mixin opacity($opacity) {
+4: 	opacity: $opacity;
+5: 	filter: alpha(opacity=$opacity * 100);	
+6: }
+7: 
+
+Backtrace:
+/Users/lagou/Desktop/test/toolbar/toolbar/css/mixin.scss:2
+/Users/lagou/Downloads/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.4.9/lib/sass/util.rb:1323:in `rescue in block in find_encoding_error'
+/Users/lagou/Downloads/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.4.9/lib/sass/util.rb:1320:in `block in find_encoding_error'
+/Users/lagou/Downloads/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.4.9/lib/sass/util.rb:1319:in `each'
+/Users/lagou/Downloads/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.4.9/lib/sass/util.rb:1319:in `each_with_index'
+/Users/lagou/Downloads/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.4.9/lib/sass/util.rb:1319:in `find_encoding_error'
+/Users/lagou/Downloads/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.4.9/lib/sass/util.rb:896:in `check_sass_encoding'
+/Users/lagou/Downloads/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:423:in `check_encoding!'
+/Users/lagou/Downloads/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:379:in `_to_tree'
+/Users/lagou/Downloads/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:368:in `_render_with_sourcemap'
+/Users/lagou/Downloads/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:285:in `render_with_sourcemap'
+/Users/lagou/Downloads/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:396:in `run'
+/Users/lagou/Downloads/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:62:in `process_result'
+/Users/lagou/Downloads/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:52:in `parse'
+/Users/lagou/Downloads/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:19:in `parse!'
+/Users/lagou/Downloads/Koala.app/Contents/Resources/app.nw/rubygems/gems/sass-3.4.9/bin/sass:13:in `<top (required)>'
+/Users/lagou/Downloads/Koala.app/Contents/Resources/app.nw/bin/sass:18:in `load'
+/Users/lagou/Downloads/Koala.app/Contents/Resources/app.nw/bin/sass:18:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid US-ASCII character \"\xE9\"\A         on line 2 of /Users/lagou/Desktop/test/toolbar/toolbar/css/mixin.scss\A \A 1: \A 2: // 透明度的简化整合 \A 3: @mixin opacity($opacity) {\A 4: 	opacity: $opacity;\A 5: 	filter: alpha(opacity=$opacity * 100);	\A 6: }\A 7: "; }

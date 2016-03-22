@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 地址配置文件
+	webPath: 为根节点;
+	如需要添加节点只需要在webPath下添加即可
+	修改此文件后直接上传即可，不需要重新启动服务;
+ -->
+<webPath>
+<!-- 	验收环境 -->
+<!-- <carUrl>http://11.207.58.72:8010</carUrl>
+<url>http://11.207.58.72:7004</url> 
+<policyUrl>http://11.207.58.72:7002</policyUrl> 
+<ecenter>http://11.207.58.72:7015</ecenter> -->
+
+<!-- 测试 -->
+ <carUrl>http://11.207.58.71:8010</carUrl> 
+ <url>http://11.207.58.71:7004</url> 
+ <policyUrl>http://11.207.58.71:7014</policyUrl> 
+ <ecenter>http://11.207.58.71:7015</ecenter>
+ <newProposal>http://11.207.58.71:7998</newProposal>
+ 
+<!-- 佛山服务器 -->
+<!-- <carUrl>http://10.133.99.2:8010</carUrl> 
+ <url>http://10.133.99.4:7006</url> 
+ <policyUrl>http://10.133.99.4:7002</policyUrl> 
+ <ecenter>http://10.133.99.4:7015</ecenter>
+  -->
+<!-- 正式 -->
+<!-- <carUrl>http://11.207.62.1:8010</carUrl>
+<url>http://11.207.62.4:7006</url>
+<policyUrl>http://11.207.62.4:7002</policyUrl>
+ <ecenter>http://11.207.62.4:7015</ecenter> -->
+</webPath>

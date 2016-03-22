@@ -1,0 +1,270 @@
+	<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .bigger-font {
+            font-size: 16px;
+        }
+        .green {
+            color: #00b38a;
+        }
+        .orange {
+            color: #fa6041;
+        }
+        .red {
+        	color: red;
+        }
+        .right {
+        	float: right;
+        }
+        .clearfix:after {content:'.';display: block;clear: both;height: 0;overflow: hidden;visibility: hidden;}
+
+        #body {
+            width: 640px;
+            margin: 0 auto;
+            font-size: 14px;
+            line-height: 22px;
+            color: #555;
+            border-radius: 2px;
+            background: #f1f1f1;
+        }
+
+        /* head */
+        .head {
+            padding: 19px 22px 13px 20px;
+            background: #00b38a;
+        }
+        .head a {
+            display: inline-block;
+        }
+        .head span, .head-right {
+            float: right;
+            color: #fff;
+        }
+        .head span {
+            margin: 24px 12px 0;
+            font-size: 13px;
+        }
+        .head-right {
+            margin-top: 25px;
+            font-size: 16px;
+            line-height: 16px;
+            text-decoration: none;
+        }
+
+        /* body */
+        .content {
+            padding: 31px 40px 40px 38px;
+            
+            background: #fff;
+        }
+        .call-content {
+            margin-top: 24px;
+        }
+        .call-content a {
+            text-decoration: underline;
+        }
+        .rec-title {
+        	width: 550px;
+        	height: 44px;
+        	margin-top: 36px;
+			padding-left: 15px;        	
+        	line-height: 44px;
+        	font-size: 18px;
+        	color: #fff;
+        	background: #02c99b;
+        }
+        .rec-content {
+        	width: 563px;
+        	margin-left: 1px;
+        	background: #fafafa;
+        }
+        .rec-item {
+        	height: 120px;
+            margin: 0 18px;
+        }
+        .rec-item + .rec-item {
+        	border-top: 1px dashed #dddddd;
+        }
+        .rec-item div {
+            float: left;
+        }
+
+        .compony-logo {
+            padding-top: 20px;
+        }
+        .rec-detail {
+        	width: 422px;
+            padding-left: 26px;
+            padding-top: 24px;
+        }
+
+        .view-all {
+			text-align: right;
+			padding-top: 24px;
+			padding-bottom: 23px;
+			border-bottom: 1px solid #e6e6e6;
+        }
+
+		.advisor-conect {
+			margin-top: 32px;
+		}
+		.advisor {
+			height: 168px;
+			margin-top: 22px;
+			padding: 0 14px;
+			background: #fafafa;
+		}
+		.advisor-head {
+			float: left;
+			width: 116px;
+			height: 116px;
+			margin-top: 15px;
+			border-radius: 50%;
+		}
+		.advisor-head img{
+			border-radius: 50%;
+		}
+		.advisor-detail {
+			padding-left: 142px;
+			padding-top: 20px;
+		}
+		.advisor-detail h3 {
+			margin-bottom: 4px;
+		}
+
+		.advisor-info {
+			color: #555;
+		}
+		.advisor-info-title {
+			color: #999;
+		}
+		.advisor-info + .advisor-info {
+			margin-top: 3px;
+		}
+
+        /* foot */
+        .foot {
+            padding-top: 16px;
+            padding-left: 21px;
+            height: 127px;
+            color: #999;
+        }
+        .foot div {
+            float: left;
+        }
+        .foot-left {
+            width: 348px;
+        }
+        .foot-left img {
+            float: left;
+        }
+        .foot-left p {
+            margin-top: 26px;
+            margin-left: 132px;
+            border-right: 1px solid #dedede;
+            line-height: 24px;
+        }
+        .foot-right {
+            width: 248px;
+        }
+        .foot-right .p1 {
+            margin: 26px -22px 2px -1px;
+            padding-left: 40px;
+            border-left: 1px solid #dedede;
+            line-height: 22px;
+        }
+        .foot-right .p2 {
+            margin: 0 0 2px -1px;
+            padding-left: 40px;
+            border-left: 1px solid #dedede;
+        }
+        .foot-right .p2 a {
+            color:#999;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="body">
+        <div class="head">
+            <a href="http://www.lagou.com/?from=dpnotice" target="_blank">
+                <img src="http://www.lagou.com/images/logo_email.png" width="229" height="43" border="0" alt="拉勾招聘" />
+            </a><a class="head-right" href="http://pai.lagou.com/index.html?from=dpnotice" target="_blank">拉勾一拍</a><span>|</span><a class="head-right" href="http://www.lagou.com/?from=dpnotice" target="_blank">首页</a>
+        </div>
+        <div class="body">
+            <div class="content">
+                <p class="call">Hi,${name!""}：</p>
+                <p class="call-content">您的职业顾问<span class="green">${顾问名!""}</span>根据您的特点和期望为您推荐了以下职位。看一看是否感兴趣吧！<br/>如果双方均选择了感兴趣，邀约会出现在<span class='green'>我的邀约—已接受</span>列表。<span class="orange">超过7天</span>未操作会被自动视作不感兴趣。</p>
+               	<div class="rec-title">顾问推荐的的职位</div>
+               	<div class="rec-content">
+	                <div class="rec-item clearfix">
+	                    <div class="compony-logo">
+	                        <img alt="企业logo" src="${componyLogo!""}" width="78" height="78"/>
+	                    </div>
+	                    <div class="rec-detail">
+	                    	<p>${recJob!""}<span class="orange">${salary!""}</span><a href='${链接!""}' class="green right">查看详情</a></p>
+	                        <p>${componyName!""}·${position!""}</p>
+	                        <p>${职位诱惑}</p>
+	                    </div>
+	                </div>
+	                <div class="rec-item clearfix">
+	                    <div class="compony-logo">
+	                        <img alt="企业logo" src="${componyLogo!""}" width="78" height="78"/>
+	                    </div>
+	                    <div class="rec-detail">
+	                    	<p>${recJob!""}<span class="orange">${salary!""}</span><a href='${链接!""}' class="green right">查看详情</a></p>
+	                        <p>${componyName!""}·${position!""}</p>
+	                        <p>${职位诱惑}</p>
+	                    </div>
+	                </div>
+                </div>
+                <div class="view-all"><a class="a green" href="#">查看全部推荐职位</a></div>
+                <p class="advisor-conect">有问题吗？试试咨询您的一拍私人顾问吧！</p>
+                <div class="advisor">
+                	<div class="advisor-head">
+                        <img alt="头像" src="${componyLogo!""}" width="116" height="116"/>
+                    </div>
+                    <div class="advisor-detail">
+                   		<h3 >${pname!""}   职业顾问</h3>
+                    	<p class="advisor-info"><span class="advisor-info-title">微信 :</span> ${weixin!""}</p>
+	                	<p class="advisor-info"><span class="advisor-info-title">电话 :</span> ${phone!""}</p>
+	                	<p class="advisor-info"><span class="advisor-info-title">邮箱 :</span> ${email!""}</p>
+	                	<p class="advisor-info"><span class="advisor-info-title">QQ :</span> ${qq!""}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="foot clearfix">
+            <!--二维码、微信服务号-->
+            <div class="foot-left">
+
+                <img src="http://www.lagou.com/images/qrcode.jpg" alt="微信号：lagouzhaopin" width="110px" height="110px">
+
+                <p>
+                    扫描左侧二维码，<br>
+                    即可通过拉勾的微信服务号，<br>
+                    更快捷地处理求职简历。
+                </p>
+            </div>
+            <!--邮箱地址-->
+            <div class="foot-right">
+                <p class="p1" style="">
+                    如果有任何问题，可以与我们联系，<br>
+                    我们将尽快为你解答。
+                </p>
+
+                <p class="p2" style="">
+                    Email：<a href="mailto:joanna@lagou.com" style="color:#999;text-decoration: none;">joanna@lagou.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

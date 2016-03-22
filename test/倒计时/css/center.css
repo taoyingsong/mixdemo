@@ -1,0 +1,37 @@
+.clearfix:after {
+  content: '.';
+  display: block;
+  clear: both;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+.m-progress {
+  border: 1px solid red;
+}
+.m-progress div {
+  float: left;
+}
+.m-progress .item {
+  text-align: center;
+}
+.m-progress .item i {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  background: url(../img/pcenter.png) 0 0 no-repeat;
+}
+.m-progress .item + .item {
+  margin-left: 160px;
+}
+.m-progress .arrow {
+  position: relative;
+  top: 12px;
+  width: 165px;
+  height: 4px;
+  margin: 0 -18px;
+  background: url(../img/pcenter.png) 0 -52px no-repeat;
+}
+.m-progress .last-arrow {
+  margin-right: -34px;
+}

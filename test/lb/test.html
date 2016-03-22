@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<input class="test" />
+
+	<script type="text/javascript" src="js/jquery.1.10.2.js"></script>
+	<script type="text/javascript">
+	$(function() {
+		var $eleRewardContent = $('.test');
+		alert(  $eleRewardContent );
+		/* 验证码只能输入数字 */
+		$eleRewardContent.on('keyup',  function () {
+		   $(this).val($(this).val().replace(/\D/g,'')); 
+		});
+		$eleRewardContent.on('paste',  function () {
+
+		    //CTR+V事件处理
+		   $(this).val($(this).val().replace(/\D/g,'')); 
+		});
+	});
+	</script>
+</body>
+</html>

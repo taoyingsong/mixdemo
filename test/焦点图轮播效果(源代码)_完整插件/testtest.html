@@ -1,0 +1,179 @@
+<html>        
+<head>        
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">        
+<title>带有图片预览功能的上传表单</title>  
+<script type="text/javascript" src="js/jquery.1.10.2.js"></script>      
+<script>        
+function viewmypic(mypic,imgfile) {         
+if (imgfile.value){         
+mypic.src=imgfile.value;         
+mypic.style.display="";         
+mypic.border=1;         
+}         
+}         
+</script>     
+
+<style type="text/css">
+	.filePrew {
+		display: block;
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 145px;
+	    height: 37px;
+	    font-size: 100px;
+	    opacity: 0;
+	}
+
+
+	.filebtn{
+width:64px;
+height:26px;
+display:inline-block;
+border:1px solid #ccc;
+line-height:26px;
+background:#0a83ff;
+color:white;
+text-align:center;
+overflow:hidden;
+position:relative;
+}
+
+.fbtn{
+font-size: 118px;
+width:80px;
+height:40px;
+cursor: pointer
+;position: absolute;
+right: 0;top: 0;
+opacity: 0;
+filter:alpha(opacity=0);
+} 
+
+
+
+
+</style>   
+
+<style type="text/css">
+body{ font-size:14px;}
+input{ vertical-align:middle; margin:0; padding:0}
+.file-box{ position:relative;width:340px}
+.txt{ height:22px; border:1px solid #cdcdcd; width:180px;}
+.btn{ background-color:#FFF; border:1px solid #CDCDCD;height:24px; width:70px;}
+.a-file{ position:absolute; top:0; right:80px; height:24px; filter:alpha(opacity:0);opacity: 0;width:260px }
+</style>
+
+
+<style type="text/css">
+	
+	/*a  upload */
+.a-upload {
+    padding: 4px 10px;
+    height: 20px;
+    line-height: 20px;
+    position: relative;
+    cursor: pointer;
+    color: #888;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1
+}
+
+.a-upload  input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer
+}
+
+.a-upload:hover {
+    color: #444;
+    background: #eee;
+    border-color: #ccc;
+    text-decoration: none
+}
+
+
+.file {
+    position: relative;
+    display: inline-block;
+    background: #D0EEFF;
+    border: 1px solid #99D3F5;
+    border-radius: 4px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #1E88C7;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+}
+.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.file:hover {
+    background: #AADFFD;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
+</style>
+</head>        
+<body>        
+     
+<div class="file-box">
+  <form action="" method="post" enctype="multipart/form-data">
+ <input type='text' name='textfield' id='textfield' class='txt' />  
+ <input type='button' class='btn' value='find...' />
+ <input type="file" name="fileField" class="a-file" id="fileField" size="28" onchange="document.getElementById('textfield').value=this.value" />
+ <input type="submit" name="submit" class="btn" value="up" />
+  </form>
+</div>
+
+
+
+<div>    
+	<span class="filebtn"><input class="fbtn" id="f" type="file"/>browse</span>
+	<span class="error"></span>
+</div>
+
+
+
+<a href="javascript:;" class="a-upload">
+    <input type="file" name="" id="">click up file
+</a>
+
+<a href="javascript:;" class="file">choose file
+    <input type="file" name="" id="">
+</a>
+    
+
+      
+<script type="text/javascript">
+	$('.fbtn').on('change', function() {
+		// console.log(	.val());
+		// console.log($('.fbtn')[0].size + "   " + $('.fbtn').type);	
+		var f = document.getElementById("f").files;  
+        //上次修改时间  
+        alert(f[0].lastModifiedDate);  
+        //名称  
+        alert(f[0].name);  
+        //大小 字节  
+        alert(f[0].size);  
+        //类型  
+        alert(f[0].type); 	
+	});
+</script>
+</body>        
+</html> 

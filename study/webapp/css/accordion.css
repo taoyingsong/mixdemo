@@ -1,0 +1,15 @@
+.accord{background:#efefef}
+.accord_title,.accord_select{background:url(../images/main_47.gif) no-repeat;height:24px;line-height:24px;cursor:pointer;color:#069}
+.accord_select{background:url(../images/main_48.gif) no-repeat;color:#fff}
+.accord_title span{float:left;margin:0 0 0 10px;padding-bottom:20px;height:27px;line-height:24px;overflow: hidden;}
+.accord_cont{display:none;height:auto}
+#accord_cont #leftMenu{
+	margin:0;
+	padding:0;
+}
+#nav{
+	margin:0;
+	margin-left:25px;
+	padding:0;
+	
+}

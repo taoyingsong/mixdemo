@@ -1,0 +1,51 @@
+@charset "utf-8";
+/* CSS Document */
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input{margin:0;padding:0;}
+body{font-size:12px;}
+img{border:none;}
+li{list-style:none;}
+input,select,textarea{outline:none;}
+textarea{resize:none;}
+a{text-decoration:none;}
+
+
+/* slider */
+.slide_showr{position:relative;float:left;width:100%;visibility: hidden; overflow:hidden;}
+.slide_showr .swipe-wrap div{float:left;width:100%;position:relative;}
+.slide_showr .swipe-wrap div a{margin-bottom:-3px;}
+.slide_showr .swipe-wrap div img{ width:100%; background:url(/jiuyi/image/loading.gif) center center no-repeat; background-size:16px 16px;}
+.slide_showr ul{position:absolute;z-index:1;width:100%; text-align:center;bottom:4px;margin:0;padding:1px 0 3px 0;height:6px;line-height:6px;list-style:none;}
+.slide_showr ul li{display:inline-block;margin:0 4px;width:6px;height:6px;background:rgba(255,255,255,.4);
+-webklit-border-radius:50%;
+-moz-border-radius:50%;
+-o-border-radius:50%;
+border-radius:50%;
+}
+.slide_showr ul li.on{background:#fff;}	
+
+/*清浮动*/
+.clearfix:after{content:"";display:block;clear:both;}
+.clearfix{zoom:1;}
+.banner{ width:480px; height:100%;position:relative; overflow:hidden; margin:0 auto;}
+.banner-btn{ display:none;}
+.banner-btn a{ display:block; line-height:40px; position:absolute;top:120px; width:40px; height:40px;background-color: #000; opacity:0.3; filter:alpha(opacity=30) color: rgb(255, 255, 255);overflow: hidden; z-index:4;}
+.prevBtn{left:5px;}
+.nextBtn{right:5px;}
+.banner-img{ font-size:0; *word-spacing:-1px;IE6、7 letter-spacing: -3px; position:relative;}
+.banner-img li{ display:block;vertical-align: top; letter-spacing: normal;word-spacing: normal; font-size:12px;border:#063 solid 5px;text-align:center; width:480px;}
+.banner i{ background:url(http://gtms01.alicdn.com/tps/i1/T1szNBFzlmXXX8QSDI-400-340.png)  no-repeat; width: 15px;height: 23px; cursor:pointer;margin: 8px 0 0 12px; display:block;}
+.banner .nextBtn i{ background-position:-200px -24px;}
+.banner .prevBtn i{ background-position:-200px 0px;}
+.banner-img li img{ width:100%; height:100%;}
+.banner-circle{ position:absolute; left:50%; bottom: 15px;height: 13px;text-align: center;font-size: 0;}
+/* .banner-circle{ position:relative; bottom: 15px;height: 13px;font-size: 0;width:10rem;margin:0 auto;} */
+.banner-circle li{ border-radius: 10px; margin:2px; display: inline-block; display: -moz-inline-stack; vertical-align: middle;zoom: 1; }
+.banner-circle li a{ display: block;padding-top: 9px;width: 9px;height: 0;border-radius: 50%; background: #B7B7B7;overflow: hidden;}
+.banner-circle .selected a{ background:#333; }
+
+
+
+.p_banner{ width:90%; height:100%; margin:0 auto;}
+.pbanner-img{ font-size:0; *word-spacing:-1px;IE6、7 letter-spacing: -3px; position:relative;}
+.pbanner-img li{clear:both;}
+.pbanner-img li img{ width:100%; height:100%;}

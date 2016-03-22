@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hack</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			background: black;
+		}
+
+		canvas {
+			display: block;
+			position: absolute;
+			top: 0;
+			z-index: -1;
+		}
+		.content {
+			width: 1024px;
+			height: 800px;
+			margin: 0 auto;
+			margin-top: 100px;
+			background: #fff;
+
+			text-align: center;
+
+		}
+	</style>
+</head>
+<body>
+<div class="content">
+	中间内容区	
+</div>
+<canvas id="c"></canvas>
+<script type="text/javascript">
+	var c = document.getElementById('c');
+	var ctx = c.getContext('2d');
+
+	c.height = window.innerHeight;
+	c.width = window.innerWidth;
+
+	var chinese = '陶蓥嵩很帅';
+	chinese = chinese.split('');
+	var font_size = 10;
+	var columns = c.width / font_size;
+	var drops = [];
+	for ( var x= 0; x < columns; x++ ) {
+		drops[x] = 1;
+	}
+
+	function draw () {
+		//后边绘制的图形覆盖前边绘制的图形
+		ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+		ctx.fillRect( 0, 0, c.width, c.height );
+
+		ctx.fillStyle = '#0f0';
+		ctx.font = font_size + 'px arial';
+
+		for ( var i = 0; i < drops.length; i++ ) {
+			var text = chinese[Math.floor(Math.random() * chinese.length)];
+			ctx.fillText( text, i * font_size, drops[i] * font_size );
+			console.log('i * font_size: ' + i * font_size + '; drops[i] * font_size: ' + drops[i] * font_size );
+
+			//随机参数  Math.random概率越小差异越大波动越大（我的命名: 差异参数|波动参数），概率大波动越小
+			if ( drops[i] * font_size > c.height && Math.random() > 0.975 ) {
+				drops[i] = 0;
+			}
+			drops[i]++;
+		}
+
+	}
+	setInterval( draw, 33 );
+	// draw();
+</script>
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>query焦点轮播图</title>
+    <style type="text/css">
+       .m-carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 360px;
+  margin: 0 auto;
+  background: url(images/carousel_bg.png) 0 0 no-repeat;
+  background-size: cover;
+}
+.m-carousel .clearfix {
+  *zoom: 1;
+}
+.m-carousel .clearfix:after {
+  visibility: hidden;
+  display: block;
+  overflow: hidden;
+  height: 0;
+  font-size: 0;
+  content: '.';
+  clear: both;
+}
+.m-carousel .list {
+  position: absolute;
+  width: 600%;
+  height: 360px;
+  z-index: 1;
+}
+.m-carousel .list .item {
+  position: relative;
+  float: left;
+  width: 16.66666667%;
+  height: 360px;
+}
+.m-carousel .carousel-content {
+  position: absolute;
+  top: 72px;
+  left: 50%;
+  width: 954px;
+  margin-left: -477px;
+}
+.m-carousel .carousel-content .head {
+  float: left;
+  width: 194px;
+  height: 194px;
+}
+.m-carousel .carousel-content .head-icon1 {
+  background: url(images/head_icon1.png) 0 0 no-repeat;
+}
+.m-carousel .carousel-content .head-icon2 {
+  background: url(images/head_icon2.png) 0 0 no-repeat;
+}
+.m-carousel .carousel-content .head-icon3 {
+  background: url(images/head_icon3.png) 0 0 no-repeat;
+}
+.m-carousel .carousel-content .head-icon4 {
+  background: url(images/head_icon4.png) 0 0 no-repeat;
+}
+.m-carousel .carousel-caption {
+  float: left;
+  padding-left: 48px;
+  padding-top: 34px;
+}
+.m-carousel .carousel-caption .paragraphs {
+  float: left;
+  width: 683px;
+}
+.m-carousel .carousel-caption p {
+  font: 16px/24px '微软雅黑';
+  color: #fff;
+}
+.m-carousel .carousel-caption .author {
+  font-size: 14px;
+  text-align: right;
+}
+.m-carousel .carousel-caption .left-quot {
+  float: left;
+  width: 19px;
+  height: 16px;
+  margin-right: 10px;
+  margin-top: 4px;
+  background: url(images/home_match_icon.png) 0 0 no-repeat;
+}
+.m-carousel .carousel-caption .right-quot {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  width: 19px;
+  height: 16px;
+  margin-left: 10px;
+  vertical-align: middle;
+  background: url(images/home_match_icon.png) -29px 0 no-repeat;
+}
+.m-carousel .buttons {
+  position: absolute;
+  bottom: 20px;
+  left: 250px;
+  width: 100px;
+  height: 10px;
+  z-index: 2;
+}
+.m-carousel .buttons span {
+  float: left;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #fff;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: #333;
+  cursor: pointer;
+}
+.m-carousel .buttons .on {
+  background: orangered;
+}
+.m-carousel .arrow {
+  display: block;
+  position: absolute;
+  top: 50%;
+  width: 26px;
+  height: 50px;
+  margin-top: -25px;
+  line-height: 39px;
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  cursor: pointer;
+}
+.m-carousel .prev {
+  left: 50px;
+  background: url(images/home_match_icon.png) -36px -26px no-repeat;
+}
+.m-carousel .prev:hover {
+  background: url(images/home_match_icon.png) -36px -86px no-repeat;
+}
+.m-carousel .next {
+  right: 50px;
+  background: url(images/home_match_icon.png) 0px -26px no-repeat;
+}
+.m-carousel .next:hover {
+  background: url(images/home_match_icon.png) 0px -86px no-repeat;
+}
+    </style>
+    <script type="text/javascript" src="js/jquery.1.10.2.js"></script>
+    <script type="text/javascript">
+
+    $(function () {
+    var bodyWidth = $(document.body).width();
+    var container = $('.m-carousel');
+    var list = $('.m-carousel .list');
+    var buttons = $('.m-carousel .buttons span');
+    var prev = $('.m-carousel .prev');
+    var next = $('.m-carousel .next');
+    var afterAniIndex = 1;
+    var index = 1;
+    var len = 4;
+    var interval = 3000;
+    var timer;
+    var isResize = false;
+
+
+    function animate (offset) {
+        var left = parseInt(list.css('left')) + offset;
+
+        //计算动画进行后为第几个图片
+        afterAniIndex = Math.abs(left/bodyWidth);
+        if(afterAniIndex == 5 ) {
+          afterAniIndex = 1;
+        }
+
+        if (offset>0) {
+            offset = '+=' + offset;
+        }
+        else {
+            offset = '-=' + Math.abs(offset);
+        }
+        list.animate({'left': offset}, 300, function () {
+          
+            //动画执行完，发现resize，从新计算屏幕宽度并重置
+            if(isResize) {
+              bodyWidth = $(document.body).width();
+              list.css('left', -bodyWidth * afterAniIndex );
+              isResize = false;
+            }
+
+            //容错，判断的bodyWidth用老的，计算的用新的
+            else if(left > -bodyWidth) {
+                list.css('left', -$(document.body).width() * len);
+            }
+
+            //同上
+            else if(left < (-bodyWidth * len)) {
+                list.css('left', -$(document.body).width());
+            }
+
+            
+        });
+    }
+
+    function showButton() {
+        buttons.eq(index-1).addClass('on').siblings().removeClass('on');
+    }
+
+    function play() {
+        timer = setTimeout(function () {
+            next.trigger('click');
+            play();
+        }, interval);
+    }
+    function stop() {
+        clearTimeout(timer);
+    }
+
+    next.on('click', function () {
+        if (list.is(':animated')) {
+            return;
+        }
+        if (index == 4) {
+            index = 1;
+        }
+        else {
+            index += 1;
+        }
+        animate(-bodyWidth);
+        showButton();
+    });
+
+    prev.on('click', function () {
+        if (list.is(':animated')) {
+            return;
+        }
+        if (index == 1) {
+            index = 4;
+        }
+        else {
+            index -= 1;
+        }
+        animate(bodyWidth);
+        showButton();
+    });
+
+    buttons.each(function () {
+         $(this).bind('click', function () {
+             if (list.is(':animated') || $(this).attr('class')=='on') {
+                 return;
+             }
+             var myIndex = parseInt($(this).attr('index'));
+             var offset = -bodyWidth * (myIndex - index);
+
+             animate(offset);
+             index = myIndex;
+             showButton();
+         });
+    });
+
+    container.hover(stop, play);
+    play();
+
+
+    $(window).on('resize', function() {
+
+        //正在进行动画时标记resize
+        isResize = true;
+
+        //没有进行动画时宽度随屏幕自适应
+        if (!list.is(':animated')) {
+            bodyWidth = $(document.body).width();
+            list.css('left', -bodyWidth * afterAniIndex);
+            isResize = false;
+        }
+    });
+
+});
+    </script>
+</head>
+<body>
+
+    <div class="m-carousel">
+        <div class="list" style="left: -100%;">
+            <div class="item"> 
+                <div class="carousel-content clearfix">
+                    <div class="head head-icon4"></div>
+                    <div class="carousel-caption clearfix">
+                        <div class="left-quot"></div>
+                        <div class="paragraphs">
+                            <p class="second-paragraph">
+                            近期考虑到自身发展，我计划到北京工作。一拍私人职业顾问Jessica找到我，想推荐我上一拍专场，我就抱着试试的心态报名了，没想到收到了好几十个面试邀请。工作这么久，多少有了解过其他招聘网站，一拍无论是在求职流程，还是简历中获取的信息，会更加突出一些，特别是提供私人顾问这样的服务，这种模式让求职者不再处于弱势地位。<span class="right-quot"></span> 
+                            </p>
+                            <br><br>
+                            <p class="author">—— 王学兵·前端开发工程师·逻辑思维</p>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <div class="item">
+                <div class="carousel-content clearfix">
+                    <div class="head head-icon1"></div>
+                    <div class="carousel-caption clearfix">
+                        <div class="left-quot"></div>
+                        <div class="paragraphs">
+                            <p class="second-paragraph">
+                            在一拍还没有开放的时候我就知道一拍了，开放使用后我就报了名。我刚毕业的时候就到上家公司工作，一呆就是4年，求职经验少得可怜。在遇到一拍之后，职业顾问Jessica给予了我很多鼓励和陪伴，帮我解答很多职业困惑，让我慢慢放下了心理负担，她的专业影响了我。从一拍的申请到我最终入职，只用了一周时间，有些不可思议。<span class="right-quot"></span> 
+                            </p>
+                            <br><br>
+                            <p class="author">—— 陈果·高级服务器开发工程师·友加</p>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <div class="item">
+                <div class="carousel-content clearfix">
+                    <div class="head head-icon2"></div>
+                    <div class="carousel-caption clearfix">
+                        <div class="left-quot"></div>
+                        <div class="paragraphs">
+                            <p class="second-paragraph">
+                            这是一次难忘又惊喜的求职经历。顾问Michael告诉我，我成为了一拍有史以来收到邀约数最多的候选人。仅仅面试了一家公司，我就找到了对味的团队。从上专场到拿到offer也只用了20个小时。一拍对我来说已经不是一个工具这么简单，参与一拍的经历，可能已经影响了我的人生轨迹。<span class="right-quot"></span> 
+                            </p>
+                            <br><br>
+                            <p class="author">—— 李明·前端开发工程师·象辑科技</p>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <div class="item">
+                <div class="carousel-content clearfix">
+                    <div class="head head-icon3"></div>
+                    <div class="carousel-caption clearfix">
+                        <div class="left-quot"></div>
+                        <div class="paragraphs">
+                            <p class="second-paragraph">
+                            这是我3年来第一次上招聘网站找工作，很幸运申请上了一拍，遇见职业顾问Yolanda。我的简历在一拍上展示了一天，收到不少企业的邀约，面试后的第二天就收到了offer，并且我很满意。Yolanda告诉我，拉勾一拍是终身服务，无论是在职场还是生活，遇到问题都可以找她。我发现自己不仅拥有了一个私人顾问，还多了一个朋友。<span class="right-quot"></span> 
+                            </p>
+                            <br><br>
+                            <p class="author">—— 丁杨洋·产品运营主管·恒昌利通</p>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <div class="item">
+                <div class="carousel-content clearfix">
+                    <div class="head head-icon4"></div>
+                    <div class="carousel-caption clearfix">
+                        <div class="left-quot"></div>
+                        <div class="paragraphs">
+                            <p class="second-paragraph">
+                            近期考虑到自身发展，我计划到北京工作。一拍私人职业顾问Jessica找到我，想推荐我上一拍专场，我就抱着试试的心态报名了，没想到收到了好几十个面试邀请。工作这么久，多少有了解过其他招聘网站，一拍无论是在求职流程，还是简历中获取的信息，会更加突出一些，特别是提供私人顾问这样的服务，这种模式让求职者不再处于弱势地位。<span class="right-quot"></span> 
+                            </p>
+                            <br><br>
+                            <p class="author">—— 王学兵·前端开发工程师·逻辑思维</p>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <div class="item">
+                <div class="carousel-content clearfix">
+                    <div class="head head-icon1"></div>
+                    <div class="carousel-caption clearfix">
+                        <div class="left-quot"></div>
+                        <div class="paragraphs">
+                            <p class="second-paragraph">
+                            在一拍还没有开放的时候我就知道一拍了，开放使用后我就报了名。我刚毕业的时候就到上家公司工作，一呆就是4年，求职经验少得可怜。在遇到一拍之后，职业顾问Jessica给予了我很多鼓励和陪伴，帮我解答很多职业困惑，让我慢慢放下了心理负担，她的专业影响了我。从一拍的申请到我最终入职，只用了一周时间，有些不可思议。<span class="right-quot"></span> 
+                            </p>
+                            <br><br>
+                            <p class="author">—— 陈果·高级服务器开发工程师·友加</p>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <a href="javascript:;" class="arrow prev"></a>
+        <a href="javascript:;" class="arrow next"></a>
+    </div>
+
+</body>
+</html>
